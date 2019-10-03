@@ -1,26 +1,18 @@
-import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../../src/app.module';
-import { applyMiddlewares } from '../../src/main'
+import { getApp } from '../testUtils'
 
 describe('Users (e2e)', () => {
   let app;
 
   beforeEach(async () => {
-    const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
-    }).compile();
-
-    app = moduleFixture.createNestApplication();
-    applyMiddlewares(app)
-    await app.init();
-    app = app.getHttpServer()
+    app = await getApp(AppModule)
   });
 
-  describe('CREATE', () => {
+  describe('/sing-up/', () => {
     it('fails validation', () => {
       return request(app)
-        .post('/users/')
+        .post('/users/sign-up')
         .send({ name: '1' })
         .expect(400)
     });
@@ -31,7 +23,6 @@ describe('Users (e2e)', () => {
         .expect(201)
     });
   });
-
   describe('GET', () => {
     it('fails validation', () => {
       return request(app)

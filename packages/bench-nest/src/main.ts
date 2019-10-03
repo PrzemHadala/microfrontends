@@ -1,6 +1,8 @@
 import { NestFactory } from '@nestjs/core';
+import * as helmet from 'helmet';
+
 import { AppModule } from './app.module';
-import { ValidationPipe, INestApplication, ParseIntPipe } from '@nestjs/common';
+import { ValidationPipe, INestApplication } from '@nestjs/common';
 
 export function applyMiddlewares (app: INestApplication): INestApplication {
   app.useGlobalPipes(new ValidationPipe({
@@ -10,8 +12,9 @@ export function applyMiddlewares (app: INestApplication): INestApplication {
 }
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, { logger: ['error', 'warn']});
   applyMiddlewares(app)
+  app.use(helmet())
   app.listen(3000);
 }
 bootstrap();

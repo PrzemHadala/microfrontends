@@ -1,0 +1,53 @@
+version: '3.7'
+services:
+  shared_db: &shared_db
+    image: scratch
+    environment: &shared_db_enviroment
+      POSTGRES_USER: 'postgres'
+      POSTGRES_PASSWORD: 'postgres'
+      POSTGRES_DB: 'tap'
+
+  db: &db
+    image: postgres:11.2
+    volumes:
+      - .:/app
+    ports:
+      - "5432:5432"
+    environment:
+      <<: *shared_db_enviroment
+
+  api: &api
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      <<: *shared_db_enviroment
+      POSTGRES_HOST: '0.0.0.0'
+      NODE_ENV: 'development'
+    links:
+      - db
+    command: bash -xc "
+      npm install;
+      npm start"
+
+  tests: &tests
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      <<: *shared_db_enviroment
+      POSTGRES_HOST: '0.0.0.0'
+      NODE_ENV: 'development'
+    links:
+      - db
+    command: bash -xc "
+      npm install;
+      npm run test:e2e"
