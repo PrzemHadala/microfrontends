@@ -14,8 +14,7 @@ import { AuthModule } from './modules/auth/auth.module';
       debug: true,
       trace: true,
       loggerLevel: 'debug',
-    })),
-    AuthModule
+    }))
   ],
   controllers: [AppController],
   providers: [AppService]

@@ -1,8 +1,6 @@
 import { User } from '../modules/users/models/user.entity'
 
-export const getDbConfig = (overrides?: object): object => {
-  console.log(process.env.NODE_ENV)
-  return ({
+export const getDbConfig = (overrides?: object): object => ({
   type: 'postgres',
   host: 'host.docker.internal',
   port: 5432,
@@ -15,4 +13,3 @@ export const getDbConfig = (overrides?: object): object => {
   ],
   ...overrides
 })
-}

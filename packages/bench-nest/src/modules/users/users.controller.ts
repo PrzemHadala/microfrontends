@@ -1,23 +1,24 @@
-import { Controller, Post, Body, Get, Param, UseGuards, HttpCode } from '@nestjs/common';
+import { Controller, Post, Body, Get, Param, UseGuards, HttpCode, Req } from '@nestjs/common';
 import { AuthGuard } from '@nestjs/passport';
 
-import { GetUserDto } from './dtos/getUserDto';
 import { UsersService } from './users.service';
 import { SignInUserDto } from './dtos/signInUserDto';
 import { SignUpUserDto } from './dtos/singUpUserDto';
 import { resolveException } from '../../exceptions';
+import { AuthService } from '../auth/auth.service';
 
 @Controller('users')
 export class UsersController {
   constructor(
-    private usersService: UsersService
+    private usersService: UsersService,
+    private authService: AuthService
   ) { }
 
-  @Post('/sign-in/')
   @UseGuards(AuthGuard('local'))
+  @Post('/sign-in/')
   @HttpCode(200)
-  signInUser(@Body() user: SignInUserDto) {
-    return 'sucessful login'
+  async signInUser(@Body() user: SignInUserDto) {
+    return this.authService.signIn(user.email)
   }
 
   @Post('/sign-up/')
@@ -30,12 +31,10 @@ export class UsersController {
     }
   }
 
+  @UseGuards(AuthGuard('jwt'))
   @Get()
-  async getusers() {
-    return ''
+  async getusers(@Req() req) {
+    return req.user
   }
-  @Get(':id')
-  getUser(@Param() params: GetUserDto) {
-    return params
-  }
+
 }

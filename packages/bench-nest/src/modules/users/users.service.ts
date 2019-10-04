@@ -15,7 +15,7 @@ export class UsersService {
   async create(user: SignUpUserDto) {
     user.password = await hash(user.password, 10);
     const newUser = this.userRepository.create(user);
-    const result = await this.userRepository.save(newUser)
+    const result = await this.userRepository.save(newUser);
     return result
   }
 
@@ -25,7 +25,7 @@ export class UsersService {
   }
 
   async findOneByEmail(email: string): Promise<User> {
-    const result = this.userRepository.find({
+    const result = await this.userRepository.find({
       where: {
         email
       }
