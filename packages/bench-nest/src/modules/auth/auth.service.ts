@@ -1,9 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { JwtService } from '@nestjs/jwt';
+import { Injectable } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcrypt'
 
-import { UsersService } from '../users/users.service';
-import { SignInUserDto } from '../users/dtos/signInUserDto';
+import { UsersService } from '../users/users.service'
+import { SignInUserDto } from '../users/dtos/signInUserDto'
 
 export interface IJwtPayload {
   name: string

@@ -1,5 +1,5 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import * as request from 'supertest';
+import { Test, TestingModule } from '@nestjs/testing'
+import * as request from 'supertest'
 
 import { applyMiddlewares } from '../src/main'
 
@@ -7,11 +7,11 @@ export async function getApp(nestModule) {
   let app
   const moduleFixture: TestingModule = await Test.createTestingModule({
     imports: [nestModule],
-  }).compile();
+  }).compile()
 
-  app = moduleFixture.createNestApplication();
+  app = moduleFixture.createNestApplication()
   applyMiddlewares(app)
-  await app.init();
+  await app.init()
   app = app.getHttpServer()
 
   return app

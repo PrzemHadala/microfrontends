@@ -1,4 +1,4 @@
-import { HttpException, HttpStatus } from "@nestjs/common"
+import { HttpException, HttpStatus } from '@nestjs/common'
 
 import { UNIQUE_VIOLATION } from '../constants/postgres'
 
@@ -16,13 +16,13 @@ const errorCodesMap: IErrorCodesMap = {
   [UNIQUE_VIOLATION]: HttpStatus.BAD_REQUEST
 }
 
-const resolvePostgressError = (code : number, detail : string) => errorsMap[code] && errorsMap[code](detail)
+const resolvePostgressError = (code: number, detail: string) => errorsMap[code] && errorsMap[code](detail)
 const resolvePostgressCode = (errCode: number) => errorCodesMap[errCode]
 
 export class PostgressException extends HttpException {
   constructor(err) {
     const errMsg = resolvePostgressError(err.code, err.detail)
     const errCode = resolvePostgressCode(err.code)
-    super(errMsg, errCode);
+    super(errMsg, errCode)
   }
 }
