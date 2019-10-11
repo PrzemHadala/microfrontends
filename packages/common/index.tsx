@@ -1,4 +1,3 @@
 import React from 'react'
-export const Comp = () => (
-  <div>sasa</div>
-)
+
+export const Comp = () => <p>sasa</p>

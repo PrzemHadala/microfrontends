@@ -19,8 +19,8 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-export const Navbar: React.FC = (props) => {
-  const classes = useStyles();
+export const Navbar = () => {
+  const classes = useStyles({})
   return (
     <div className={classes.root}>
       <AppBar position='static'>

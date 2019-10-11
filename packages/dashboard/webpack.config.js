@@ -1,18 +1,34 @@
+const HtmlWebPackPlugin = require("html-webpack-plugin");
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+
 module.exports = {
-  mode: "development",
+  mode: process.env.NODE_ENV === "production" ? "production" : "development",
   devtool: "inline-source-map",
-  entry: "./app.ts",
+  entry: "./src/index.tsx",
   output: {
+    path: __dirname + "/dist",
     filename: "bundle.js"
   },
+  devServer: {
+    inline: true,
+    contentBase: './public',
+    port: 3000
+  },
   resolve: {
-    // Add `.ts` and `.tsx` as a resolvable extension.
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {
     rules: [
-      // all files with a `.ts` or `.tsx` extension will be handled by `ts-loader`
-      { test: /\.tsx?$/, loader: "ts-loader" }
+      { test: /\.tsx?$/, exclude: /node_modules/, loader: "ts-loader" },
+      { test: /\.js$/, use: ["source-map-loader"], enforce: "pre" },
+      { test: /\.css$/, use: ['style-loader', 'css-loader'] }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebPackPlugin({
+      template: "./public/index.html",
+      filename: "index.html"
+    }),
+    new MiniCssExtractPlugin({ filename: "app.css" }),
+  ]
 };
