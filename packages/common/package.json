@@ -1,0 +1,14 @@
+{
+  "name": "@microfrontends/common",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "react": "^16.10.2"
+  },
+  "author": "",
+  "license": "ISC"
+}

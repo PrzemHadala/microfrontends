@@ -1,3 +1,0 @@
-
-export const UNIQUE_VIOLATION = 23505
-export const POSTGRES_ERRORS = [UNIQUE_VIOLATION]
