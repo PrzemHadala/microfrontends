@@ -1,5 +1,5 @@
 {
-  "name": "@microfrontends/microfrontends",
+  "name": "microfrontends",
   "private": true,
   "devDependencies": {
     "lerna": "^3.17.0"
