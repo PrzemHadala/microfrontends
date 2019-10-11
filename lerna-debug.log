@@ -1,0 +1,18 @@
+0 silly argv {
+0 silly argv   _: [ 'import' ],
+0 silly argv   lernaVersion: '3.17.0',
+0 silly argv   '$0': '..\\..\\..\\..\\AppData\\Roaming\\npm\\node_modules\\lerna\\cli.js',
+0 silly argv   dir: 'dashboard/'
+0 silly argv }
+1 notice cli v3.17.0
+2 verbose rootPath C:\Users\phadala\Documents\PGS_BENCH\react\microfrontends
+3 error Error: Command failed: git log --format=%h
+3 error fatal: your current branch 'master' does not have any commits yet
+3 error
+3 error
+3 error     at makeError (C:\Users\phadala\AppData\Roaming\npm\node_modules\lerna\node_modules\execa\index.js:174:9)
+3 error     at Function.module.exports.sync (C:\Users\phadala\AppData\Roaming\npm\node_modules\lerna\node_modules\execa\index.js:338:15)
+3 error     at Object.execSync (C:\Users\phadala\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\child-process\index.js:26:16)
+3 error     at ImportCommand.externalExecSync (C:\Users\phadala\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\import\index.js:147:34)
+3 error     at ImportCommand.initialize (C:\Users\phadala\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\import\index.js:82:25)
+3 error     at C:\Users\phadala\AppData\Roaming\npm\node_modules\lerna\node_modules\@lerna\command\index.js:271:24

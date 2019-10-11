@@ -1,0 +1,7 @@
+{
+  "name": "@microfrontends/microfrontends",
+  "private": true,
+  "devDependencies": {
+    "lerna": "^3.17.0"
+  }
+}

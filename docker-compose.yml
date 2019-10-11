@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+
+  app:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    volumes:
+      - .:/app
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: 'development'
+    command: bash -xc "
+      lerna bootstrap --scope dashboard;
+      lerna run start --scope dashboard;"
+
+volumes:
+  app: {}
