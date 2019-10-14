@@ -1,9 +1,12 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const path = require('path')
 
 module.exports = {
   mode: process.env.NODE_ENV === "production" ? "production" : "development",
-  devtool: "inline-source-map",
+  optimization: {
+    usedExports: true,
+  },
+  devtool: "source-map",
   entry: "./src/index.tsx",
   output: {
     path: __dirname + "/dist",
@@ -15,6 +18,10 @@ module.exports = {
     port: 3000
   },
   resolve: {
+    alias: {
+      react: path.resolve('./node_modules/react'),
+      '@material-ui': path.resolve('./node_modules/@material-ui')
+    },
     extensions: [".ts", ".tsx", ".js"]
   },
   module: {
@@ -28,7 +35,6 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: "./public/index.html",
       filename: "index.html"
-    }),
-    new MiniCssExtractPlugin({ filename: "app.css" }),
+    })
   ]
-};
+}

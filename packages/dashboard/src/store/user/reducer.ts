@@ -18,7 +18,9 @@ const initialState: IUserState = {
 
 const getUserReducer = createReducer(initialState, {
   [userActions.signUpError.type]: state => ({ ...state, signUpError: true }),
-  [userActions.signUpSuccess.type]: (state, { authToken }: ISignUpSuccessAction) => ({ ...state, isSignedIn: true, authToken })
+  [userActions.signUpSuccess.type]: (state, { authToken }: ISignUpSuccessAction) => ({ ...state, isSignedIn: true, authToken }),
+  [userActions.signIn.type]: state => ({ ...state, isSignedIn: true }),
+  [userActions.signOut.type]: state => ({ ...state, isSignedIn: false})
 })
 
 export const userReducer = (state: IUserState | undefined, action: Action) => getUserReducer(state, action)

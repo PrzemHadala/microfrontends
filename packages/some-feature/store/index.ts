@@ -5,7 +5,7 @@ import rootReducer from './rootReducer'
 const store = configureStore({
   reducer: rootReducer,
   devTools: {
-    name: 'dashboard'
+    name: 'someFeature'
   }
 })
 
@@ -16,6 +16,6 @@ if (process.env.NODE_ENV === 'development' && module.hot) {
   })
 }
 
-export const dashboardContext = React.createContext(null)
+export const someFeatureContext = React.createContext(null)
 
 export default store

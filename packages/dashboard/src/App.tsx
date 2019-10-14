@@ -4,15 +4,18 @@ import { Router } from 'react-router-dom'
 import { createBrowserHistory } from 'history'
 
 import { Navbar } from './containers/navbar/Navbar'
-import store from './store'
-import { Comp } from '@microfrontends/common'
+import store, { dashboardContext } from './store'
+import { SomeFeatureSubapp } from '@microfrontends/some-feature'
+import featureStore, { someFeatureContext } from '@microfrontends/some-feature/store'
 
 const history = createBrowserHistory()
 const App: React.FC = () => (
   <Router history={history}>
-    <Provider store={store}>
-      <Navbar></Navbar>
-      <Comp></Comp>
+    <Provider store={store} context={dashboardContext}>
+      <Provider store={featureStore} context={someFeatureContext}>
+        <Navbar></Navbar>
+        <SomeFeatureSubapp />
+      </Provider>
     </Provider>
   </Router>
 )

@@ -13,9 +13,12 @@ export interface ISignUpSuccessAction {
 export const signUp = createAction<ISignUpAction>('[user] signUp')
 export const signUpSuccess = createAction<ISignUpSuccessAction>('[user] signUpSuccess')
 export const signUpError = createAction('[user] signUpErorr')
-
+export const signIn = createAction('[user] signIn')
+export const signOut = createAction('[user] signOut')
 export const userActions = {
   signUp,
   signUpSuccess,
-  signUpError
+  signUpError,
+  signIn,
+  signOut
 }
