@@ -13,7 +13,7 @@ services:
       NODE_ENV: 'development'
     command: bash -xc "
       lerna bootstrap;
-      lerna run start --scope @microfrontends/dashboard --stream;"
+      lerna run start-docker --scope @microfrontends/dashboard --stream;"
 
 volumes:
   app: {}

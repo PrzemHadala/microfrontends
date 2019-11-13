@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "webpack-dev-server --mode development --hot"
+    "start": "webpack-dev-server --mode development --hot",
+    "start-docker":  "webpack-dev-server --mode development --hot --open --host 0.0.0.0"
   },
   "dependencies": {
     "@material-ui/core": "4.5.0",
