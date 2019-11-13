@@ -6,3 +6,5 @@ RUN yarn global add typescript
 RUN mkdir -p /app
 WORKDIR /app
 ADD . /app
+
+EXPOSE 3000

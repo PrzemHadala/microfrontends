@@ -49,7 +49,7 @@ const NavbarComp: React.FC<INavbar> = ({ isSignedIn, signIn, signOut, switchText
             <MenuIcon />
           </IconButton>
           <Typography variant='h6' className={classes.title}>
-            external someText: {someText}, switch it: <Switch onChange={ e => switchText()}/>
+            This value is external: <Typography color='secondary' component='span'>{someText}</Typography> Switch it: <Switch onChange={ e => switchText()}/>
           </Typography>
           <SignInButton isSignedIn={isSignedIn} signIn={signIn} signOut={signOut} />
         </Toolbar>

@@ -12,8 +12,8 @@ services:
     environment:
       NODE_ENV: 'development'
     command: bash -xc "
-      lerna bootstrap --scope dashboard;
-      lerna run start --scope dashboard;"
+      lerna bootstrap;
+      lerna run start --scope @microfrontends/dashboard --stream;"
 
 volumes:
   app: {}
